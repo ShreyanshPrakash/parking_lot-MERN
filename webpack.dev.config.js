@@ -10,7 +10,7 @@ module.exports = {
   },
   // entry: './app.js',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/FrontEnd'),
     publicPath: '/',
     filename: '[name].[contenthash].js',
     // chunkFilename: '[name].[contenthash].js',
@@ -41,7 +41,8 @@ module.exports = {
             loader: "babel-loader",
             options: {
                 presets: ['@babel/preset-env', '@babel/preset-react'],
-                sourceMap : true
+                sourceMap : true,
+                plugins: ["@babel/plugin-syntax-dynamic-import"]
                 // sourceMap: process.env.NODE_ENV !== 'production'
             }
           }]

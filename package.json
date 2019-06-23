@@ -8,14 +8,15 @@
     "dev": "webpack --mode development --config webpack.dev.config.js",
     "prod": "webpack --mode production --config webpack.prod.config.js",
     "buildServerWebpack": "webpack --config webpack.server.config.js",
-    "buildServer": "babel ./back-end/ -d dist/back-end",
-    "server": "nodemon ./dist/back-end/server.js"
+    "buildServer": "babel ./BackEnd/ -d dist/BackEnd",
+    "server": "nodemon ./dist/BackEnd/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
@@ -39,8 +40,10 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "express": "^4.17.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1"
   }
 }
