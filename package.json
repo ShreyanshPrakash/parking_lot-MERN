@@ -8,8 +8,8 @@
     "dev": "webpack --mode development --config webpack.dev.config.js",
     "prod": "webpack --mode production --config webpack.prod.config.js",
     "buildServerWebpack": "webpack --config webpack.server.config.js",
-    "buildServer": "babel ./server.js -d dist",
-    "server": "nodemon ./dist/server.js"
+    "buildServer": "babel ./back-end/ -d dist/back-end",
+    "server": "nodemon ./dist/back-end/server.js"
   },
   "keywords": [],
   "author": "",
