@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 module.exports = {
   watch : true,
   entry: {
-    app: './app.js'
+    app: './index.js'
     // child: './src/child.js'
   },
   // entry: './app.js',
@@ -21,7 +21,6 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         commons: {
-          filename: '[name].bundle.js',
           chunks: 'all'
         },
         vendors: {

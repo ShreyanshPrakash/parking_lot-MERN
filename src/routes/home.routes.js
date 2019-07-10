@@ -1,23 +1,32 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { HomeComponent } from '../components/home.component';
+import { LoginComponent } from '../components/login.component';
+import { ErrorComponent } from '../components/error.component';
 
-export class HomeRoutes extends React.Component{
+export default class HomeRoutes extends React.Component {
 
-    constructor( props ){
-        super( props );
-        if( this.props.location.pathname === '/'){
-            this.props.history.push('/home');
+    constructor(props) {
+        super(props);
+        if (this.props.location.pathname === '/') {
+            // this.props.history.push('/home');
+            <Redirect to='/home' />
+        } else {
+            console.log(this.props.location.pathname);
         }
     }
 
 
-    render(){
+    render() {
 
-        return(
+        return (
             <React.Fragment>
-                <Route path="/home" component={ HomeComponent } />
+                <Switch>
+                    <Route path="/home" component={HomeComponent} />
+                    <Route path="/login" component={LoginComponent} />
+                    <Route path="/" component={ErrorComponent} />
+                </Switch>
             </React.Fragment>
         )
     }

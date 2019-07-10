@@ -7,11 +7,11 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 
 module.exports = {
   entry: {
-    app: './app.js',
-    child: './src/child.js'
+    app: './index.js'
+    // child: './src/child.js'
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist', 'FrontEnd'),
     publicPath: '/',
     filename: '[name].[contenthash].js',
   },
@@ -29,9 +29,10 @@ module.exports = {
     //   new OptimizeCSSAssetsPlugin({})
     ],
     splitChunks: {
+      // chunks: 'all'
       cacheGroups: {
         commons: {
-          filename: '[name].bundle.js',
+          // filename: '[name].bundle.js',
           chunks: 'all'
         },
         vendors: {

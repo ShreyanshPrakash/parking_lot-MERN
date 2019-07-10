@@ -8,8 +8,8 @@
     "dev": "webpack --mode development --config webpack.dev.config.js",
     "prod": "webpack --mode production --config webpack.prod.config.js",
     "buildServerWebpack": "webpack --config webpack.server.config.js",
-    "buildServer": "babel ./BackEnd/ -d dist/BackEnd",
-    "server": "nodemon ./dist/BackEnd/server.js"
+    "buildServer": "babel ./BackEnd/ -d dist/BackEnd && npm run server",
+    "server": "nodemon ./BackEnd/server.js"
   },
   "keywords": [],
   "author": "",
@@ -44,6 +44,8 @@
     "express": "^4.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.3"
   }
 }

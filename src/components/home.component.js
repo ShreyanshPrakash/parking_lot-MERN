@@ -4,7 +4,6 @@ export class HomeComponent extends React.Component{
 
     constructor( props ){
         super( props );
-        console.log('Hello weold');
     }
 
 

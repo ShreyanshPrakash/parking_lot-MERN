@@ -1,13 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
-// import { AdminComponent } from '../components/admin.component';
-// import { DashboardComponent } from '../components/dashboard.component';
+import { AdminComponent } from '../components/admin.component';
+import { DashboardComponent } from '../components/dashboard.component';
 
-const AdminComponent = React.lazy(() => import('../components/admin.component.js'));
-const DashboardComponent = React.lazy(() => import('../components/dashboard.component.js'));
+// const AdminComponent = React.lazy(() => import('../components/admin.component.js'));
+// const DashboardComponent = React.lazy(() => import('../components/dashboard.component.js'));
 
-export class AdminRoutes extends React.Component {
+export default class AdminRoutes extends React.Component {
 
     constructor(props) {
         super(props);
@@ -20,8 +20,10 @@ export class AdminRoutes extends React.Component {
         return (
             <React.Suspense fallback={<div>Waiting</div>}>
                 <React.Fragment>
-                    <Route path="/admin" exact component={AdminComponent} />
-                    <Route path="/admin/dashboard" component={DashboardComponent} />
+                    <Switch>
+                        <Route path="/admin" exact component={AdminComponent} />
+                        <Route path="/admin/dashboard" component={DashboardComponent} />
+                    </Switch>
                 </React.Fragment>
             </React.Suspense>
 

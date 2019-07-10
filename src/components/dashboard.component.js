@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class DashboardComponent extends React.Component{
+export class DashboardComponent extends React.Component{
 
     constructor( props ){
         super( props );

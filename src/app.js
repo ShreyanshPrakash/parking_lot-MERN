@@ -1,27 +1,42 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { HomeRoutes } from './routes/home.routes';
-import { AdminRoutes } from './routes/admin.routes';
-import { CustomerRoutes } from './routes/customer.routes';
+import { ErrorBoundary } from './services/error.service';
+import { ErrorComponent } from './components/error.component';
 
-export class App extends React.Component{
+// const HomeRoutes = React.lazy(() => import('./routes/home.routes').then( module => {
+//     console.log( module );
+//     return module;
+// }));
+const HomeRoutes = React.lazy(() => import('./routes/home.routes'));
+const AdminRoutes = React.lazy(() => import('./routes/admin.routes'));
+const CustomerRoutes = React.lazy(() => import('./routes/customer.routes'));
 
-    constructor( props ){
-        super( props );
+export class App extends React.Component {
+
+    constructor(props) {
+        super(props);
     }
 
 
-    render(){
+    render() {
 
-        return(
-            <BrowserRouter>
-                <React.Fragment>
-                    <Route path="/admin/" component={AdminRoutes} />
-                    <Route path="/customer" component={CustomerRoutes} />
-                    <Route path="/" component={HomeRoutes} />
-                </React.Fragment>
-            </BrowserRouter>
+        return (
+            <ErrorBoundary>
+                <React.Suspense fallback={<div>Loading.....</div>}>
+                    <BrowserRouter>
+                        <React.Fragment>
+                            <Switch>
+                                <Route path="/admin" component={AdminRoutes} />
+                                <Route path="/customer" component={CustomerRoutes} />
+                                <Route path="/error/:code" component={ErrorComponent} />
+                                <Route path="/" component={HomeRoutes} />
+                            </Switch>
+                        </React.Fragment>
+                    </BrowserRouter>
+                </React.Suspense>
+            </ErrorBoundary>
+
         )
     }
 }

@@ -1,12 +1,11 @@
 import React from 'react';
 
-export default class AdminComponent extends React.Component{
+export  class AdminComponent extends React.Component{
 
     constructor( props ){
         super( props );
         console.log('Hello weold');
     }
-
 
     render(){
         return(

@@ -1,24 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
-import { HomeComponent } from '../components/home.component';
 import { CustomerComponent } from '../components/customer.component';
 import { DashboardComponent } from '../components/dashboard.component';
 
-export class CustomerRoutes extends React.Component{
+export default class CustomerRoutes extends React.Component {
 
-    constructor( props ){
-        super( props );
-        console.log( this.props );
+    constructor(props) {
+        super(props);
+        console.log(this.props);
     }
 
 
-    render(){
+    render() {
 
-        return(
+        return (
             <React.Fragment>
-                <Route path="/customer" exact component={ CustomerComponent } />
-                <Route path="/customer/dashboard" component={ DashboardComponent } />
+                <Switch>
+                    <Route path="/customer" exact component={CustomerComponent} />
+                    <Route path="/customer/dashboard" component={DashboardComponent} />
+                </Switch>
             </React.Fragment>
         )
     }
