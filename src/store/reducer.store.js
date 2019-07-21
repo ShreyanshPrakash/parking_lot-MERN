@@ -1,22 +1,35 @@
+import { createStore } from 'redux';
+
 import { ActionTypes } from './action.store';
 import { 
     InitialStateModel, 
-    UISuccesStateModel, 
+    UISuccessStateModel, 
     UIErrorStateModel,
     UIStateModel 
 } from '../models/allModels.model';
+import { makeApiCall } from '../services/httpClent.service';
+import { handleApiCallSuccess, handleApiCallFailure } from '../services/utility.service';
 
 export const RootReducer = ( state = new InitialStateModel(), action ) => {
-
+    console.log( action );
+    console.log( '---------------- Reducer --------------------');
     switch( action.type ){
 
         case ActionTypes.API_CALL_SUCCESS : 
-            const successInfo = handleApiCallSuccess( action.payload );
             return{
                 ...state,
-                uiState:{
+                uiState: {
                     errorState: new UIErrorStateModel(),
-                    successState: successInfo
+                    successState: handleApiCallSuccess( action.payload )
+                }
+            }
+
+        case ActionTypes.API_CALL_FAILED :
+            return{
+                ...state,
+                uiState: {
+                    errorState: handleApiCallFailure( action.payload ),
+                    successState: new UISuccessStateModel()
                 }
             }
 
@@ -26,3 +39,6 @@ export const RootReducer = ( state = new InitialStateModel(), action ) => {
             }
     }
 }
+
+
+export const store = createStore( RootReducer );

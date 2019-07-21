@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const http = require('http');
 
 const app = express();
 const envConfig = fs.readFileSync(
@@ -22,15 +23,33 @@ app.use( loggerMiddlewarteApp );
 app.use( errorMiddlewareApp );
 
 /* MiddleWares end here */
-/*  Api endpoints start here  */
 
+/*  Api endpoints start here  */
 app.use( '/restservices/cms/v1/', cmsRoutes );
 // app.use( '/restservices/cms/v1/', cmsRoutes );
 // app.use( '/restservices/cms/v1/', cmsRoutes );
 // app.use( '/restservices/cms/v1/', cmsRoutes );
 // app.use( '/restservices/cms/v1/', cmsRoutes );
-
 /*  Api endpoints ends here  */
+
+// Proxy 
+// app.use('/restservices/', (req,ress,next) => {
+//     console.log( 'where ');
+//     http.get( 'http://localhost:3400/restservices/', ( res ) => {
+//         res.setEncoding('UTF-8');
+//     res.on('data', (chunk) =>{
+//         ress.end( chunk );
+//         console.log(chunk);
+//     });
+//     res.on('end', (chunk) => {
+//         console.log("All Downloaded ", chunk);
+//     });
+//     // console.log( res );
+//     //    ress.end( res );
+//     })
+    
+// })
+
 /*  Serving HTML file */
 
 app.get('*' , (req,res) => {

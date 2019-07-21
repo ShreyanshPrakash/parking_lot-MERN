@@ -8,7 +8,6 @@ export default class CustomerRoutes extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props);
     }
 
 

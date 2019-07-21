@@ -10,6 +10,7 @@ export class UIStateModel{
     constructor(){
         this.errorState = new UIErrorStateModel();
         this.successState = new UISuccessStateModel();
+        this.isUserAuthenticated = true;
     }
     
 }
@@ -29,5 +30,18 @@ export class UIErrorStateModel{
         this.hasError = false;
         this.errorMessage = '';
         this.errorResponse = ''
+    }
+}
+
+export class apiConfigModel{
+
+    constructor(){
+        this.url = ''
+        this.method = 'get',
+        this.headers = {},
+        this.params = {},
+        this.data = {},
+        this.responseType = 'json',
+        this.responseEncoding = 'utf-8'
     }
 }
